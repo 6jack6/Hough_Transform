@@ -1,7 +1,8 @@
 """Invoke the Hough Transform function."""
 
-from __init__ import __version__
 import click
+
+from ..__init__ import __version__
 
 # from hough_transform_project.ImageProcessor import ImageProcessor
 

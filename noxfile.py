@@ -37,7 +37,7 @@ def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> Any
             f"--output={requirements.name}",
             external=True,
         )
-        session.install(f"--constraint={requirements.name}", *args, **kwargs)
+        session.install(f"--log={requirements.name}", *args, **kwargs)
 
 
 @nox.session(python=["3.9"])
@@ -106,7 +106,7 @@ def mypy(session: Session) -> None:
 def pytype(session: Session) -> None:
     """Type-check using pytype."""
     args = session.posargs or ["--disable=import-error", *locations]
-    install_with_constraints(session, "pytype")
+    install_with_constraints(session, "pytype", "click", "pytest")
     session.run("pytype", *args)
 
 
